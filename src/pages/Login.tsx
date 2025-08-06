@@ -36,9 +36,13 @@ const Login = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-md mx-auto bg-card rounded-2xl shadow-card p-8">
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary-foreground font-bold text-2xl">🌿</span>
-            </div>
+            <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center mx-auto mb-4">
+  <img
+    src="/logo.png" 
+    alt="FreshCart Logo"
+    className="object-cover w-full h-full"
+  />
+</div>
             <h1 className="text-2xl font-bold text-foreground">Welcome to FreshCart</h1>
             <p className="text-muted-foreground">Sign in to your account or create a new one</p>
           </div>

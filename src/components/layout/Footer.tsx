@@ -8,12 +8,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">🌿</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">FreshCart</span>
-            </div>
+            <div className="flex items-center space-x-3">
+  <img
+    src="/logo.png"
+    alt="FreshCart Logo"
+    className="w-10 h-10 rounded-xl object-cover"
+  />
+  <span className="text-2xl font-bold text-foreground">FreshCart</span>
+</div>
+
             <p className="text-muted-foreground text-sm">
               Your trusted partner for fresh, quality groceries delivered right to your doorstep. 
               Fresh produce, great prices, amazing service.
@@ -120,9 +123,9 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} FreshCart. All rights reserved. Made with 💚 for fresh food lovers.
-          </p>
+        <p className="text-muted-foreground text-sm">
+          © {new Date().getFullYear()} FreshCart. All rights reserved. Made with ❤️ for fresh food lovers.
+        </p>
         </div>
       </div>
     </footer>

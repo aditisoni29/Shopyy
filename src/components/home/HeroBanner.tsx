@@ -51,15 +51,15 @@ const HeroBanner = () => {
           <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
             <div className="text-center">
               <div className="text-3xl font-bold text-fresh-green">1000+</div>
-              <div className="text-sm text-gray-300">Products</div>
+              <div className="text-sm text-gray-600 font-bold">Products</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-fresh-green">24/7</div>
-              <div className="text-sm text-gray-300">Delivery</div>
+              <div className="text-sm text-gray-600 font-bold">Delivery</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-fresh-green">99%</div>
-              <div className="text-sm text-gray-300">Fresh Guarantee</div>
+              <div className="text-sm text-gray-600 font-bold">Fresh Guarantee</div>
             </div>
           </div>
         </div>
