@@ -6,22 +6,35 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
-const Product = require("./models/product");
-const User = require("./models/user");
+// Import Utilities
+const ExpressError = require("./utils/ExpressError");
+
+// Import Models
+const User = require("./models/User");
+
+// Import Routers
+const productRoutes = require("./routes/product");
+const authRoutes = require("./routes/auth");
+const cartRoutes = require("./routes/cart");
+const contactRoutes = require("./routes/contact");
 
 const app = express();
 const PORT = 3001;
+const secret = process.env.SESSION_SECRET;
 
+// Database Connection
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("Successfully connected to MongoDB!"))
   .catch((error) => console.error("Error connecting to MongoDB:", error));
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Session and Passport Configuration
 const sessionConfig = {
-  secret: process.env.SESSION_SECRET,
+  secret: secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -31,20 +44,25 @@ const sessionConfig = {
   },
 };
 app.use(session(sessionConfig));
-
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get("/api/products", async (req, res) => {
-  try {
-    const products = await Product.find({});
-    res.json(products);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching products" });
-  }
+// API Routes
+app.use("/api/products", productRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/contact", contactRoutes);
+
+app.all("*", (req, res, next) => {
+  next(new ExpressError(404, "API Route Not Found!"));
+});
+
+app.use((err, req, res, next) => {
+  let { statusCode = 500, message = "Something went wrong!" } = err;
+  res.status(statusCode).json({ message });
 });
 
 app.listen(PORT, () => {

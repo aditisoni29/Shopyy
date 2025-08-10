@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-//structure of product document in database
 const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -14,7 +13,7 @@ const productSchema = new mongoose.Schema(
     discount: { type: String },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields
+    timestamps: true,
   }
 );
 
